@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="92108cba-daf0-41f1-b347-0db463b62815" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/docs/docs.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/docs/swagger.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/docs/swagger.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cqzone-user/web/controller/UserController.go" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.13.1/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1imaCwfmwbSxh6ay93CmW10Wq3D" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="go build github.com/changqing98/cqzone/user" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="user" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/changqing98/cqzone/user" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/changqing98/cqzone/user" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="590" y="448" key="#GOROOT" timestamp="1602515112732">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="590" y="448" key="#GOROOT/0.0.1680.1050@0.0.1680.1050" timestamp="1602515112732" />
+    <state width="1628" height="274" key="GridCell.Tab.0.bottom" timestamp="1602515197938">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1628" height="274" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1602515197938" />
+    <state width="1628" height="274" key="GridCell.Tab.0.center" timestamp="1602515197937">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1628" height="274" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1602515197937" />
+    <state width="1628" height="274" key="GridCell.Tab.0.left" timestamp="1602515197937">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1628" height="274" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1602515197937" />
+    <state width="1628" height="274" key="GridCell.Tab.0.right" timestamp="1602515197937">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1628" height="274" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1602515197937" />
+  </component>
+</project>
