@@ -1,6 +1,16 @@
 basePath: /v1
 definitions:
+  command.SendSmsVerificationCodeCommand:
+    properties:
+      mobile:
+        type: string
+    type: object
   web.Error:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
     type: object
 host: localhost:8080
 info:
@@ -16,11 +26,10 @@ info:
   title: Swagger Example API
   version: "1.0"
 paths:
-  /users:checkEmail:
+  /users:
     post:
       consumes:
       - application/json
-      description: description
       parameters:
       - description: Mobile
         in: body
@@ -32,12 +41,64 @@ paths:
       - application/json
       responses:
         "200":
-          description: true已存在,false不存在
+          description: 注册成功
           schema:
             type: bool
-        "404":
+        "409":
           description: Can not find ID
           schema:
             $ref: '#/definitions/web.Error'
-      summary: 校验手机号是否存在
+      summary: 用户注册
+  /users:passwordLogin:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Mobile
+        in: body
+        name: mobile
+        required: true
+        schema:
+          type: string
+      - description: password
+        in: body
+        name: password
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 登录成功返回认证token
+          schema:
+            type: bool
+        "401":
+          description: 密码输入错误
+          schema:
+            $ref: '#/definitions/web.Error'
+      summary: 账号密码登录
+  /users:sendVerificationCode:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Mobile
+        in: body
+        name: command
+        required: true
+        schema:
+          $ref: '#/definitions/command.SendSmsVerificationCodeCommand'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: true已存在,false不存在
+          schema:
+            type: bool
+        "409":
+          description: Can not find ID
+          schema:
+            $ref: '#/definitions/web.Error'
+      summary: 发送手机验证码
 swagger: "2.0"

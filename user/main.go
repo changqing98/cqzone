@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "github.com/changqing98/cqzone/user/docs"
+	"github.com/changqing98/cqzone/user/web/controller"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -23,6 +24,10 @@ import (
 // @BasePath /v1
 func main() {
 	r := gin.New()
+	userController := controller.CreateUserController()
+
+	r.POST("/v1/users:sendVerificationCode", userController.SendSmsVerificationCode)
+
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 	r.Run()

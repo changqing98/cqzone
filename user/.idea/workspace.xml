@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92108cba-daf0-41f1-b347-0db463b62815" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/docs/docs.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/docs/swagger.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/docs/swagger.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/go.mod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/go.sum" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cqzone-user/web/controller/UserController.go" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum197821092.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/service/SmsService.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/infrastructure/utils/log/log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/Error.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/Error.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/controller/UserController.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/UserController.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/../.editorconfig" previewFile="$PROJECT_DIR$/application/service/UserApplicationServiceImpl.go" />
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.13.1/libexec" />
   <component name="Git.Settings">
@@ -24,12 +28,15 @@
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1imaCwfmwbSxh6ay93CmW10Wq3D" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
@@ -38,6 +45,11 @@
     <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/infrastructure/utils/log" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="go build github.com/changqing98/cqzone/user" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -58,6 +70,9 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

@@ -33,16 +33,15 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/users:checkEmail": {
+        "/users": {
             "post": {
-                "description": "description",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "校验手机号是否存在",
+                "summary": "用户注册",
                 "parameters": [
                     {
                         "description": "Mobile",
@@ -56,12 +55,93 @@ var doc = `{
                 ],
                 "responses": {
                     "200": {
+                        "description": "注册成功",
+                        "schema": {
+                            "type": "bool"
+                        }
+                    },
+                    "409": {
+                        "description": "Can not find ID",
+                        "schema": {
+                            "$ref": "#/definitions/web.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users:passwordLogin": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "账号密码登录",
+                "parameters": [
+                    {
+                        "description": "Mobile",
+                        "name": "mobile",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "password",
+                        "name": "password",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "登录成功返回认证token",
+                        "schema": {
+                            "type": "bool"
+                        }
+                    },
+                    "401": {
+                        "description": "密码输入错误",
+                        "schema": {
+                            "$ref": "#/definitions/web.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users:sendVerificationCode": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "发送手机验证码",
+                "parameters": [
+                    {
+                        "description": "Mobile",
+                        "name": "command",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/command.SendSmsVerificationCodeCommand"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
                         "description": "true已存在,false不存在",
                         "schema": {
                             "type": "bool"
                         }
                     },
-                    "404": {
+                    "409": {
                         "description": "Can not find ID",
                         "schema": {
                             "$ref": "#/definitions/web.Error"
@@ -72,8 +152,24 @@ var doc = `{
         }
     },
     "definitions": {
+        "command.SendSmsVerificationCodeCommand": {
+            "type": "object",
+            "properties": {
+                "mobile": {
+                    "type": "string"
+                }
+            }
+        },
         "web.Error": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
         }
     }
 }`

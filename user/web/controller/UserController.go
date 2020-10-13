@@ -1,29 +1,63 @@
 package controller
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/changqing98/cqzone/user/application/command"
+	"github.com/changqing98/cqzone/user/application/service"
+	"github.com/gin-gonic/gin"
+)
 
-type UserController struct{}
+// UserController 用户接扣
+type UserController struct {
+	userApplicationService *service.UserApplicationService
+}
 
 var userController *UserController
 
-func newUserController() *UserController {
+// CreateUserController 创建用户控制器
+func CreateUserController() *UserController {
 	if userController == nil {
-		userController = &UserController{}
+		userController = &UserController{
+			userApplicationService: service.CreateUserApplicationService(),
+		}
 	}
 	return userController
 }
 
-// @Summary 校验手机号是否存在
-// @Description description
+// SendSmsVerificationCode 发送手机验证码
+// @Summary 发送手机验证码
+// @Accept json
+// @Produce  json
+// @Param  command body command.SendSmsVerificationCodeCommand true "Mobile"
+// @Success 200 {bool} bool	"true已存在,false不存在"
+// @Failure 409 {object} web.Error "Can not find ID"
+// @Router /users:sendVerificationCode [post]
+func (userController *UserController) SendSmsVerificationCode(c *gin.Context) {
+	command := &command.SendSmsVerificationCodeCommand{}
+	c.BindJSON(command)
+	verificationCode := userController.userApplicationService.SendSmsVerificationCode(command)
+	c.JSON(200, verificationCode)
+}
+
+// Register 用户注册
+// @Summary 用户注册
 // @Accept json
 // @Produce  json
 // @Param  mobile  body string true "Mobile"
-// @Success 200 {bool} bool	"true已存在,false不存在"
-// @Failure 404 {object} web.Error "Can not find ID"
-// @Router /users:checkEmail [post]
-func (userController *UserController) checkMobile(c *gin.Context) {
-	c.Request.Body.Read()
+// @Success 200 {bool} bool	"注册成功"
+// @Failure 409 {object} web.Error "Can not find ID"
+// @Router /users [post]
+func (userController *UserController) Register(c *gin.Context) {
 }
 
-func (userController *UserController) register(c *gin.Context) {
+// PasswordLogin 账号密码登录
+// @Summary 账号密码登录
+// @Accept json
+// @Produce  json
+// @Param  mobile  body string true "Mobile"
+// @Param password body string true "password"
+// @Success 200 {bool} dto.AuthenticationDTO	"登录成功返回认证token"
+// @Failure 401 {object} web.Error "密码输入错误"
+// @Router /users:passwordLogin [post]
+func (userController *UserController) PasswordLogin(c *gin.Context) {
+
 }
