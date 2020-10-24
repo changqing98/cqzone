@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "github.com/changqing98/cqzone/user/docs"
-	"github.com/changqing98/cqzone/user/web/controller"
-	"github.com/gin-gonic/gin"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
+    "github.com/gin-gonic/gin"
+    swaggerFiles "github.com/swaggo/files"
+    ginSwagger "github.com/swaggo/gin-swagger"
+    _ "user/docs"
+    "user/web/controller"
 )
 
 // @title Swagger Example API

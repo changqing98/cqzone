@@ -1,29 +1,30 @@
 package service
 
 import (
-	"github.com/changqing98/cqzone/user/infrastructure/utils/log"
+    "user/infrastructure/utils/logger"
 )
 
-// ISmsService 短信服接口定义
-type ISmsService interface {
+// SmsService 短信服接口定义
+type SmsService interface {
 	// 发送手机验证码
 	SendVerificationCode(mobile string, verificationCode string)
 }
 
-// SmsService 短信服务
-type SmsService struct {
+// SmsServiceImpl 短信服务实现
+type SmsServiceImpl struct {
 }
 
-var smsService *SmsService
+var smsService SmsService
 
-func CreateSmsService() *SmsService {
+// CreateSmsService 创建SmsService
+func CreateSmsService() SmsService {
 	if smsService == nil {
-		smsService = &SmsService{}
+		smsService = &SmsServiceImpl{}
 	}
 	return smsService
 }
 
 // SendVerificationCode 发送短信验证码
-func (smsService *SmsService) SendVerificationCode(mobile string, verificationCode string) {
-	log.Info("mobile: " + mobile + ", sms verification code: " + verificationCode)
+func (smsService SmsServiceImpl) SendVerificationCode(mobile string, verificationCode string) {
+	logger.Info("mobile: " + mobile + ", sms verification code: " + verificationCode)
 }

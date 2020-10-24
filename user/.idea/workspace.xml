@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92108cba-daf0-41f1-b347-0db463b62815" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/go.sum197821092.tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/service/SmsService.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/utils/log/log.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/service/UserApplicationService.go" beforeDir="false" afterPath="$PROJECT_DIR$/application/service/UserApplicationService.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/service/SmsService.go" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/service/SmsService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/utils/log/log.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/Error.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/Error.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/controller/UserController.go" beforeDir="false" afterPath="$PROJECT_DIR$/web/controller/UserController.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +16,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="EditorConfigPreviewManager">
-    <editorConfig file="$PROJECT_DIR$/../.editorconfig" previewFile="$PROJECT_DIR$/application/service/UserApplicationServiceImpl.go" />
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.13.1/libexec" />
   <component name="Git.Settings">
@@ -26,6 +25,9 @@
   </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1imaCwfmwbSxh6ay93CmW10Wq3D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -38,6 +40,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
@@ -45,9 +48,12 @@
     <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/infrastructure/utils/logger" />
+      <recent name="$PROJECT_DIR$/infrastructure/service" />
       <recent name="$PROJECT_DIR$/infrastructure/utils/log" />
     </key>
   </component>
@@ -61,13 +67,21 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Go Build.go build github.com/changqing98/cqzone/user" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92108cba-daf0-41f1-b347-0db463b62815" name="Default Changelist" comment="" />
+      <created>1603552283629</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603552283629</updated>
+    </task>
+    <servers />
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
@@ -76,12 +90,21 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+    <environment>
+      <map>
+        <entry key="GOPROXY" value="https://goproxy.io" />
+      </map>
+    </environment>
   </component>
   <component name="WindowStateProjectService">
     <state x="590" y="448" key="#GOROOT" timestamp="1602515112732">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="590" y="448" key="#GOROOT/0.0.1680.1050@0.0.1680.1050" timestamp="1602515112732" />
+    <state x="723" y="376" key="EnvironmentVariablesDialog" timestamp="1603550137138">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="723" y="376" key="EnvironmentVariablesDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603550137138" />
     <state width="1628" height="274" key="GridCell.Tab.0.bottom" timestamp="1602515197938">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -98,5 +121,17 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1628" height="274" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1602515197937" />
+    <state x="232" y="76" key="SettingsEditor" timestamp="1603552386193">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="232" y="76" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1603552386193" />
+    <state x="652" y="277" key="refactoring.ChangeSignatureDialog" timestamp="1603551168584">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="652" y="277" key="refactoring.ChangeSignatureDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603551168584" />
+    <state x="565" y="336" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603551763801">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="565" y="336" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1603551763801" />
   </component>
 </project>

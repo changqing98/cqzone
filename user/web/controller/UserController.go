@@ -1,14 +1,15 @@
 package controller
 
 import (
-	"github.com/changqing98/cqzone/user/application/command"
-	"github.com/changqing98/cqzone/user/application/service"
+	"user/application/command"
+	"user/application/service"
+
 	"github.com/gin-gonic/gin"
 )
 
 // UserController 用户接扣
 type UserController struct {
-	userApplicationService *service.UserApplicationService
+	userApplicationService service.UserApplicationService
 }
 
 var userController *UserController
@@ -32,9 +33,9 @@ func CreateUserController() *UserController {
 // @Failure 409 {object} web.Error "Can not find ID"
 // @Router /users:sendVerificationCode [post]
 func (userController *UserController) SendSmsVerificationCode(c *gin.Context) {
-	command := &command.SendSmsVerificationCodeCommand{}
-	c.BindJSON(command)
-	verificationCode := userController.userApplicationService.SendSmsVerificationCode(command)
+	smsVerificationCodeCommand := command.SendSmsVerificationCodeCommand{}
+	c.BindJSON(&smsVerificationCodeCommand)
+	verificationCode := userController.userApplicationService.SendSmsVerificationCode(smsVerificationCodeCommand)
 	c.JSON(200, verificationCode)
 }
 
