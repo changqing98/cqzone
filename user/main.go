@@ -4,8 +4,6 @@ import (
     "github.com/gin-gonic/gin"
     swaggerFiles "github.com/swaggo/files"
     ginSwagger "github.com/swaggo/gin-swagger"
-    _ "user/docs"
-    "user/web/controller"
 )
 
 // @title Swagger Example API
@@ -24,9 +22,8 @@ import (
 // @BasePath /v1
 func main() {
 	r := gin.New()
-	userController := controller.CreateUserController()
 
-	r.POST("/v1/users:sendVerificationCode", userController.SendSmsVerificationCode)
+	//r.POST("/v1/users:sendVerificationCode", userController.SendSmsVerificationCode)
 
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
