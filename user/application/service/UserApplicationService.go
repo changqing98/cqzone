@@ -10,7 +10,7 @@ type UserApplicationService interface {
     // 发送手机验证码
     SendSmsVerificationCode(sendSmsVerificationCodeCommand command.SendSmsVerificationCodeCommand) string
     // 用户注册
-    Register(createUserCommand command.CreateUserCommand) dto.AuthenticationDto
+    Register(createUserCommand command.EmailRegisterCommand) dto.AuthenticationDTO
     // 密码登录
-    PasswordLogin(passwordLoginCommand command.PasswordLoginCommand) dto.AuthenticationDto
+    PasswordLogin(passwordLoginCommand command.PasswordLoginCommand) dto.AuthenticationDTO
 }

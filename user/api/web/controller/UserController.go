@@ -11,6 +11,10 @@ type UserController struct {
     userApplicationService appSvc.UserApplicationService
 }
 
+func NewUserController(userApplicationService appSvc.UserApplicationService) UserController {
+    return UserController{userApplicationService}
+}
+
 // SendSmsVerificationCode 发送手机验证码
 // @Summary 发送手机验证码
 // @Accept json
@@ -30,11 +34,16 @@ func (userController UserController) SendSmsVerificationCode(c *gin.Context) {
 // @Summary 用户注册
 // @Accept json
 // @Produce  json
-// @Param  mobile  body string true "Mobile"
-// @Success 200 {bool} bool	"注册成功"
+// @Param  command body command.EmailRegisterCommand true "用户注册请求"
+// @Success 200 {object} dto.AuthenticationDTO "注册成功"
 // @Failure 409 {object} web.Error "Can not find ID"
 // @Router /users [post]
 func (userController UserController) Register(c *gin.Context) {
+    userApplicationService := userController.userApplicationService
+    var userRegisterCommand command.EmailRegisterCommand
+    c.ShouldBind(&userRegisterCommand)
+    result := userApplicationService.Register(userRegisterCommand)
+    c.JSON(200, result)
 }
 
 // PasswordLogin 账号密码登录
@@ -43,7 +52,7 @@ func (userController UserController) Register(c *gin.Context) {
 // @Produce  json
 // @Param  mobile  body string true "Mobile"
 // @Param password body string true "password"
-// @Success 200 {bool} dto.AuthenticationDTO	"登录成功返回认证token"
+// @Success 200 {object} dto.AuthenticationDTO	"登录成功返回认证token"
 // @Failure 401 {object} web.Error "密码输入错误"
 // @Router /users:passwordLogin [post]
 func (userController UserController) PasswordLogin(c *gin.Context) {

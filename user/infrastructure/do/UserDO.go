@@ -9,8 +9,6 @@ type UserDO struct {
     Mobile             string
     Email              string
     Password           string
-    HasMobileValidated bool
-    HasEmailValidated  bool
     CreatedAt          time.Time
     UpdatedAt          time.Time
 }

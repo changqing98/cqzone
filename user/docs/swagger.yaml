@@ -1,8 +1,22 @@
 basePath: /v1
 definitions:
+  command.EmailRegisterCommand:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      verificationCode:
+        type: string
+    type: object
   command.SendSmsVerificationCodeCommand:
     properties:
       mobile:
+        type: string
+    type: object
+  dto.AuthenticationDTO:
+    properties:
+      token:
         type: string
     type: object
   web.Error:
@@ -31,19 +45,19 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: Mobile
+      - description: 用户注册请求
         in: body
-        name: mobile
+        name: command
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/command.EmailRegisterCommand'
       produces:
       - application/json
       responses:
         "200":
           description: 注册成功
           schema:
-            type: bool
+            $ref: '#/definitions/dto.AuthenticationDTO'
         "409":
           description: Can not find ID
           schema:
@@ -72,7 +86,7 @@ paths:
         "200":
           description: 登录成功返回认证token
           schema:
-            type: bool
+            $ref: '#/definitions/dto.AuthenticationDTO'
         "401":
           description: 密码输入错误
           schema:

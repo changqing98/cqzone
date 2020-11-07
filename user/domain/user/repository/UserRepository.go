@@ -3,8 +3,9 @@ package repository
 import "github.com/changqing98/cqzone/user/domain/user/model"
 
 type UserRepository interface {
-    save(user model.User) model.User
-    findByUserId(userId string) model.User
-    findByMobile(mobile string) model.User
-    findByEmail(email string) model.User
+    NextUserId() string
+    Save(user model.User)
+    FindByUserId(userId string) model.User
+    FindByMobile(mobile string) model.User
+    FindByEmail(email string) model.User
 }

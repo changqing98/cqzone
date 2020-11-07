@@ -1,7 +1,7 @@
 package command
 
-type CreateUserCommand struct {
-	Mobile           string
-	VerificationCode string
-	password         string
+type EmailRegisterCommand struct {
+    Email            string `json:"email"`
+    VerificationCode string `json:"verificationCode"`
+    Password         string `json:"password"`
 }

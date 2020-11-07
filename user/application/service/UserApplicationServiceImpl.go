@@ -3,6 +3,7 @@ package service
 import (
     "github.com/changqing98/cqzone/user/application/command"
     "github.com/changqing98/cqzone/user/application/dto"
+    "github.com/changqing98/cqzone/user/domain/user/model"
     "github.com/changqing98/cqzone/user/domain/user/repository"
     infraSvc "github.com/changqing98/cqzone/user/infrastructure/service"
 )
@@ -13,7 +14,7 @@ type userApplicationServiceImpl struct {
     smsService     infraSvc.SmsService
 }
 
-func NewUserApplicationServiceImpl(userRepository repository.UserRepository, smsService infraSvc.SmsService) UserApplicationService {
+func NewUserApplicationService(userRepository repository.UserRepository, smsService infraSvc.SmsService) UserApplicationService {
     return userApplicationServiceImpl{userRepository, smsService}
 }
 
@@ -26,13 +27,27 @@ func (userApplicationService userApplicationServiceImpl) SendSmsVerificationCode
 }
 
 // Register 用户注册
-func (userApplicationService userApplicationServiceImpl) Register(createUserCommand command.CreateUserCommand) dto.AuthenticationDto {
-    return dto.AuthenticationDto{}
+func (userApplicationService userApplicationServiceImpl) Register(createUserCommand command.EmailRegisterCommand) dto.AuthenticationDTO {
+    userRepo := userApplicationService.userRepository
+    userId := model.UserId{
+        Id: userRepo.NextUserId(),
+    }
+    email := createUserCommand.Email
+    password := createUserCommand.Password
+    user := model.User{
+        UserId:   userId,
+        Email:    email,
+        Password: password,
+    }
+    userRepo.Save(user)
+    return dto.AuthenticationDTO{
+        Token: "token",
+    }
 }
 
 // PasswordLogin 账号密码登录
-func (userApplicationService userApplicationServiceImpl) PasswordLogin(passwordLoginCommand command.PasswordLoginCommand) dto.AuthenticationDto {
-    return dto.AuthenticationDto{}
+func (userApplicationService userApplicationServiceImpl) PasswordLogin(passwordLoginCommand command.PasswordLoginCommand) dto.AuthenticationDTO {
+    return dto.AuthenticationDTO{}
 }
 
 // 生成验证码

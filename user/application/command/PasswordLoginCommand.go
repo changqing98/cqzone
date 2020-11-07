@@ -1,6 +1,6 @@
 package command
 
 type PasswordLoginCommand struct {
-	Mobile string `json:"mobile"`
+	Username string `json:"username"`
 	Password string `json:"password"`
 }

@@ -44,12 +44,12 @@ var doc = `{
                 "summary": "用户注册",
                 "parameters": [
                     {
-                        "description": "Mobile",
-                        "name": "mobile",
+                        "description": "用户注册请求",
+                        "name": "command",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/command.EmailRegisterCommand"
                         }
                     }
                 ],
@@ -57,7 +57,7 @@ var doc = `{
                     "200": {
                         "description": "注册成功",
                         "schema": {
-                            "type": "bool"
+                            "$ref": "#/definitions/dto.AuthenticationDTO"
                         }
                     },
                     "409": {
@@ -102,7 +102,7 @@ var doc = `{
                     "200": {
                         "description": "登录成功返回认证token",
                         "schema": {
-                            "type": "bool"
+                            "$ref": "#/definitions/dto.AuthenticationDTO"
                         }
                     },
                     "401": {
@@ -152,10 +152,32 @@ var doc = `{
         }
     },
     "definitions": {
+        "command.EmailRegisterCommand": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "verificationCode": {
+                    "type": "string"
+                }
+            }
+        },
         "command.SendSmsVerificationCodeCommand": {
             "type": "object",
             "properties": {
                 "mobile": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.AuthenticationDTO": {
+            "type": "object",
+            "properties": {
+                "token": {
                     "type": "string"
                 }
             }

@@ -6,6 +6,4 @@ type User struct {
     Mobile             string
     Email              string
     Password           string
-    HasMobileValidated bool
-    HasEmailValidated  bool
 }
