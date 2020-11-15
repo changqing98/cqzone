@@ -5,5 +5,9 @@ import (
 )
 
 func Info(message string) {
-	log.Info(message)
+    log.Info(message)
+}
+
+func Error(args ...interface{}) {
+    log.Error(args)
 }

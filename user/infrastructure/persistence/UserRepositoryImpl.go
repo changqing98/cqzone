@@ -11,18 +11,27 @@ type UserRepositoryImpl struct {
     Engine *xorm.Engine
 }
 
-func (userRepoImpl UserRepositoryImpl) NextUserId() string{
+func (userRepoImpl UserRepositoryImpl) NextUserId() string {
     return "user_id"
 }
 
 func (userRepoImpl UserRepositoryImpl) Save(user model.User) {
     userDo := convertor.ConvertUserToDo(user)
-    userRepoImpl.Engine.Insert(&userDo)
+    _, err := userRepoImpl.Engine.Insert(userDo)
+    if err != nil {
+        panic(err)
+    }
 }
 
 func (userRepoImpl UserRepositoryImpl) FindByUserId(userId string) model.User {
     var userDo do.UserDO
-    userRepoImpl.Engine.Where("userId = ?", userId).Get(&userDo)
+    success, err := userRepoImpl.Engine.Where("user_id = ?", userId).Get(&userDo)
+    if !success {
+        panic("User not found")
+    }
+    if err != nil {
+        panic(err)
+    }
     return convertor.ConvertDOToUser(userDo)
 }
 
