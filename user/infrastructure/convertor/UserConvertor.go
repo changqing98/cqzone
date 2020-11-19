@@ -5,7 +5,7 @@ import (
     "github.com/changqing98/cqzone/user/infrastructure/do"
 )
 
-func ConvertUserToDo(user model.User) do.UserDO {
+func ConvertUserToDo(user *model.User) *do.UserDO {
     var userDo = do.UserDO{
         UserId:   user.UserId.Id,
         Nickname: user.Nickname,
@@ -13,17 +13,17 @@ func ConvertUserToDo(user model.User) do.UserDO {
         Email:    user.Email,
         Password: user.Password,
     }
-    return userDo
+    return &userDo
 }
 
-func ConvertDOToUser(userDO do.UserDO) model.User {
+func ConvertDOToUser(userDO *do.UserDO) *model.User {
     userId := userDO.UserId
     var user = model.User{
-        UserId:   model.UserId{Id: userId},
+        UserId:   &model.UserId{Id: userId},
         Nickname: userDO.Nickname,
         Mobile:   userDO.Mobile,
         Email:    userDO.Email,
         Password: userDO.Password,
     }
-    return user
+    return &user
 }

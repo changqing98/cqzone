@@ -1,14 +1,14 @@
-package config
+package xorm
 
 import "github.com/go-xorm/xorm"
 import _ "github.com/go-sql-driver/mysql"
 
 const DriverNameMysql = "mysql"
 
-const DataScourceName = "changqing:123456@tcp(mysql:3306)/user"
+const DataSourceName = "changqing:123456@tcp(mysql:3306)/alien"
 
 func GetXORMEngine() *xorm.Engine {
-    engine, err := xorm.NewEngine(DriverNameMysql, DataScourceName)
+    engine, err := xorm.NewEngine(DriverNameMysql, DataSourceName)
     if err != nil {
         panic(err)
     }

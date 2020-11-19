@@ -1,9 +1,9 @@
 package model
 
 type UserId struct {
-    Id int
+    Id int64
 }
 
-func NewUserId(id int) UserId {
+func NewUserId(id int64) UserId {
     return UserId{id}
 }

@@ -19,7 +19,7 @@ func NewUserApplicationService(userRepository repository.UserRepository, smsServ
 }
 
 // SendSmsVerificationCode 发送手机验证码的实现
-func (userApplicationService userApplicationServiceImpl) SendSmsVerificationCode(sendSmsVerificationCodeCommand command.SendSmsVerificationCodeCommand) string {
+func (userApplicationService userApplicationServiceImpl) SendSmsVerificationCode(sendSmsVerificationCodeCommand *command.SendSmsVerificationCodeCommand) string {
     smsVerificationCode := generateSmsVerificationCode()
     mobile := sendSmsVerificationCodeCommand.Mobile
     userApplicationService.smsService.SendVerificationCode(mobile, smsVerificationCode)
@@ -27,27 +27,21 @@ func (userApplicationService userApplicationServiceImpl) SendSmsVerificationCode
 }
 
 // Register 用户注册
-func (userApplicationService userApplicationServiceImpl) Register(createUserCommand command.EmailRegisterCommand) dto.AuthenticationDTO {
+func (userApplicationService userApplicationServiceImpl) Register(createUserCommand *command.EmailRegisterCommand) *dto.AuthenticationDTO {
     userRepo := userApplicationService.userRepository
-    userId := model.UserId{
-        Id: userRepo.NextUserId(),
-    }
-    email := createUserCommand.Email
-    password := createUserCommand.Password
     user := model.User{
-        UserId:   userId,
-        Email:    email,
-        Password: password,
+        Email:    createUserCommand.Email,
+        Password: createUserCommand.Password,
     }
-    userRepo.Save(user)
-    return dto.AuthenticationDTO{
+    userRepo.Save(&user)
+    return &dto.AuthenticationDTO{
         Token: "token",
     }
 }
 
 // PasswordLogin 账号密码登录
-func (userApplicationService userApplicationServiceImpl) PasswordLogin(passwordLoginCommand command.PasswordLoginCommand) dto.AuthenticationDTO {
-    return dto.AuthenticationDTO{}
+func (userApplicationService userApplicationServiceImpl) PasswordLogin(passwordLoginCommand *command.PasswordLoginCommand) *dto.AuthenticationDTO {
+    return &dto.AuthenticationDTO{}
 }
 
 // 生成验证码

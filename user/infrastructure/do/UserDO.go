@@ -3,14 +3,14 @@ package do
 import "time"
 
 type UserDO struct {
-    Id        int
-    UserId    int
-    Nickname  string
-    Mobile    string
-    Email     string
-    Password  string
-    CreatedAt time.Time `xorm:"created_at"`
-    UpdatedAt time.Time `xorm:"updated_at"`
+    Id        int64
+    UserId    int64     `xorm:"notnull"`
+    Nickname  string    `xorm:"varchar(50) notnull"`
+    Mobile    string    `xorm:"varchar(16) notnull unique"`
+    Email     string    `xorm:"varchar(40) notnull unique"`
+    Password  string    `xorm:"varchar(60) notnull unique"`
+    CreatedAt time.Time `xorm:"created notnull"`
+    UpdatedAt time.Time `xorm:"updated notnull"`
 }
 
 func (UserDO) TableName() string {
