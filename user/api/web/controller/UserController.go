@@ -24,8 +24,8 @@ func NewUserController(userApplicationService appSvc.UserApplicationService) Use
 // @Failure 409 {object} web.Error "Can not find ID"
 // @Router /users:sendVerificationCode [post]
 func (userController UserController) SendSmsVerificationCode(c *gin.Context) {
-    smsVerificationCodeCommand := command.SendSmsVerificationCodeCommand{}
-    c.BindJSON(&smsVerificationCodeCommand)
+    smsVerificationCodeCommand := &command.SendSmsVerificationCodeCommand{}
+    c.BindJSON(smsVerificationCodeCommand)
     verificationCode := userController.userApplicationService.SendSmsVerificationCode(smsVerificationCodeCommand)
     c.JSON(200, verificationCode)
 }
@@ -40,8 +40,8 @@ func (userController UserController) SendSmsVerificationCode(c *gin.Context) {
 // @Router /users [post]
 func (userController UserController) Register(c *gin.Context) {
     userApplicationService := userController.userApplicationService
-    var userRegisterCommand command.EmailRegisterCommand
-    c.ShouldBind(&userRegisterCommand)
+    var userRegisterCommand *command.EmailRegisterCommand
+    c.ShouldBind(userRegisterCommand)
     result := userApplicationService.Register(userRegisterCommand)
     c.JSON(200, result)
 }
