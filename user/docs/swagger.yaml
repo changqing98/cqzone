@@ -1,17 +1,24 @@
 basePath: /v1
 definitions:
-  command.EmailRegisterCommand:
+  command.CreateUserCommand:
     properties:
-      email:
+      nickname:
+        description: 昵称
         type: string
       password:
+        description: 密码
         type: string
-      verificationCode:
+      username:
+        description: 用户名
         type: string
     type: object
-  command.SendSmsVerificationCodeCommand:
+  command.PasswordLoginCommand:
     properties:
-      mobile:
+      password:
+        description: 密码
+        type: string
+      username:
+        description: 用户名
         type: string
     type: object
   dto.AuthenticationDTO:
@@ -50,7 +57,7 @@ paths:
         name: command
         required: true
         schema:
-          $ref: '#/definitions/command.EmailRegisterCommand'
+          $ref: '#/definitions/command.CreateUserCommand'
       produces:
       - application/json
       responses:
@@ -68,18 +75,12 @@ paths:
       consumes:
       - application/json
       parameters:
-      - description: Mobile
+      - description: 用户注册请求
         in: body
-        name: mobile
+        name: command
         required: true
         schema:
-          type: string
-      - description: password
-        in: body
-        name: password
-        required: true
-        schema:
-          type: string
+          $ref: '#/definitions/command.PasswordLoginCommand'
       produces:
       - application/json
       responses:
@@ -92,27 +93,4 @@ paths:
           schema:
             $ref: '#/definitions/web.Error'
       summary: 账号密码登录
-  /users:sendVerificationCode:
-    post:
-      consumes:
-      - application/json
-      parameters:
-      - description: Mobile
-        in: body
-        name: command
-        required: true
-        schema:
-          $ref: '#/definitions/command.SendSmsVerificationCodeCommand'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: true已存在,false不存在
-          schema:
-            type: bool
-        "409":
-          description: Can not find ID
-          schema:
-            $ref: '#/definitions/web.Error'
-      summary: 发送手机验证码
 swagger: "2.0"

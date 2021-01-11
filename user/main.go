@@ -2,7 +2,7 @@ package main
 
 import (
     "github.com/changqing98/cqzone/user/api/web/controller"
-    "github.com/changqing98/cqzone/user/application/service"
+    "github.com/changqing98/cqzone/user/application/command/service"
     _ "github.com/changqing98/cqzone/user/docs"
     "github.com/changqing98/cqzone/user/infrastructure/persistence"
     infraSvc "github.com/changqing98/cqzone/user/infrastructure/service"
@@ -27,7 +27,7 @@ import (
 // @host localhost:8080
 // @BasePath /v1
 func main() {
-    engine := xorm.GetXORMEngine()
+    engine := xorm.GetXormEngine()
     userRepo := persistence.UserRepositoryImpl{Engine: engine}
     smsService := infraSvc.CreateSmsService()
     userApplicationService := service.NewUserApplicationService(userRepo, smsService)

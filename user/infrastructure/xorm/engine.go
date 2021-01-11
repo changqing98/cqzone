@@ -1,16 +1,14 @@
 package xorm
 
-import "github.com/go-xorm/xorm"
+import (
+    "github.com/changqing98/cqzone/user/infrastructure/config"
+    "github.com/go-xorm/xorm"
+)
 import _ "github.com/go-sql-driver/mysql"
 
-const DriverNameMysql = "mysql"
+var configInst = config.GetConfig()
+var engineInst, _ = xorm.NewEngine(configInst.Db.Driver, configInst.Db.DataSource)
 
-const DataSourceName = "changqing:123456@tcp(mysql:3306)/alien"
-
-func GetXORMEngine() *xorm.Engine {
-    engine, err := xorm.NewEngine(DriverNameMysql, DataSourceName)
-    if err != nil {
-        panic(err)
-    }
-    return engine
+func GetXormEngine() *xorm.Engine {
+    return engineInst
 }

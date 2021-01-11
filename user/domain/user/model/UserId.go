@@ -1,9 +1,13 @@
 package model
 
 type UserId struct {
-    Id int64
+    Id int
 }
 
-func NewUserId(id int64) UserId {
-    return UserId{id}
+func NewUserId(Id int) *UserId {
+    return &UserId{Id}
+}
+
+func (userId UserId) getId() int {
+    return userId.Id
 }

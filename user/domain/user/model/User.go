@@ -2,8 +2,7 @@ package model
 
 type User struct {
     UserId   *UserId
+    Username string
     Nickname string
-    Mobile   string
-    Email    string
     Password string
 }

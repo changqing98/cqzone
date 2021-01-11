@@ -1,7 +1,10 @@
 package command
 
-type EmailRegisterCommand struct {
-    Email            string `json:"email"`
-    VerificationCode string `json:"verificationCode"`
-    Password         string `json:"password"`
+type CreateUserCommand struct {
+    // 昵称
+    Nickname string
+    // 用户名
+    Username string
+    // 密码
+    Password string
 }

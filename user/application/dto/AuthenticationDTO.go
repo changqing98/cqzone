@@ -1,5 +1,5 @@
 package dto
 
 type AuthenticationDTO struct {
-	Token string `json:"token"`
+    Token string `json:"token"`
 }

@@ -49,7 +49,7 @@ var doc = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/command.EmailRegisterCommand"
+                            "$ref": "#/definitions/command.CreateUserCommand"
                         }
                     }
                 ],
@@ -80,21 +80,12 @@ var doc = `{
                 "summary": "账号密码登录",
                 "parameters": [
                     {
-                        "description": "Mobile",
-                        "name": "mobile",
+                        "description": "用户注册请求",
+                        "name": "command",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "description": "password",
-                        "name": "password",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/command.PasswordLoginCommand"
                         }
                     }
                 ],
@@ -113,63 +104,35 @@ var doc = `{
                     }
                 }
             }
-        },
-        "/users:sendVerificationCode": {
-            "post": {
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "summary": "发送手机验证码",
-                "parameters": [
-                    {
-                        "description": "Mobile",
-                        "name": "command",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/command.SendSmsVerificationCodeCommand"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "true已存在,false不存在",
-                        "schema": {
-                            "type": "bool"
-                        }
-                    },
-                    "409": {
-                        "description": "Can not find ID",
-                        "schema": {
-                            "$ref": "#/definitions/web.Error"
-                        }
-                    }
-                }
-            }
         }
     },
     "definitions": {
-        "command.EmailRegisterCommand": {
+        "command.CreateUserCommand": {
             "type": "object",
             "properties": {
-                "email": {
+                "nickname": {
+                    "description": "昵称",
                     "type": "string"
                 },
                 "password": {
+                    "description": "密码",
                     "type": "string"
                 },
-                "verificationCode": {
+                "username": {
+                    "description": "用户名",
                     "type": "string"
                 }
             }
         },
-        "command.SendSmsVerificationCodeCommand": {
+        "command.PasswordLoginCommand": {
             "type": "object",
             "properties": {
-                "mobile": {
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "用户名",
                     "type": "string"
                 }
             }
