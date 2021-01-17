@@ -1,0 +1,31 @@
+dependencies {
+  api 'io.grpc:grpc-netty-shaded:1.28.1'
+  api 'io.grpc:grpc-protobuf:1.28.1'
+  api 'io.grpc:grpc-stub:1.28.1'
+  api 'io.netty:netty-all:4.1.42.Final'
+}
+
+sourceSets {
+  main {
+    proto {
+      srcDirs = ["$projectDir/proto"]
+    }
+  }
+}
+
+protobuf {
+  generatedFilesBaseDir = "$projectDir/src"
+  protoc {
+    artifact = "com.google.protobuf:protoc:3.11.0"
+  }
+  plugins {
+    grpc {
+      artifact = 'io.grpc:protoc-gen-grpc-java:1.28.1'
+    }
+  }
+  generateProtoTasks {
+    all()*.plugins {
+      grpc {}
+    }
+  }
+}

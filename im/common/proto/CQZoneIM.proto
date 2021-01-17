@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.yechangqing.cqzone.im.common.proto";
+option go_package = "im;im";
+option java_outer_classname = "CQZoneIMProto";
+
+message Request {
+  int64 request_id = 1;
+  string msg = 2;
+  int32 type = 3;
+}
+
+message Response {
+  int64 response_id = 1;
+  string msg = 2;
+  int32 type = 3;
+}
