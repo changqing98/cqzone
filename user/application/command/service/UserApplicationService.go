@@ -5,7 +5,6 @@ import (
     "github.com/changqing98/cqzone/user/application/dto"
     "github.com/changqing98/cqzone/user/domain/user/model"
     "github.com/changqing98/cqzone/user/domain/user/repository"
-    infraSvc "github.com/changqing98/cqzone/user/infrastructure/service"
     "github.com/changqing98/cqzone/user/infrastructure/utils/sha"
     "strconv"
 )
@@ -13,11 +12,10 @@ import (
 // UserApplicationService 用户应用服务
 type UserApplicationService struct {
     userRepository repository.UserRepository
-    smsService     infraSvc.SmsService
 }
 
-func NewUserApplicationService(userRepository repository.UserRepository, smsService infraSvc.SmsService) UserApplicationService {
-    return UserApplicationService{userRepository, smsService}
+func NewUserApplicationService(userRepository repository.UserRepository) UserApplicationService {
+    return UserApplicationService{userRepository}
 }
 
 // Register 用户注册

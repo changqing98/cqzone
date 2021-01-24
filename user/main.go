@@ -5,7 +5,6 @@ import (
     "github.com/changqing98/cqzone/user/application/command/service"
     _ "github.com/changqing98/cqzone/user/docs"
     "github.com/changqing98/cqzone/user/infrastructure/persistence"
-    infraSvc "github.com/changqing98/cqzone/user/infrastructure/service"
     "github.com/changqing98/cqzone/user/infrastructure/xorm"
     "github.com/gin-gonic/gin"
     swaggerFiles "github.com/swaggo/files"
@@ -29,8 +28,7 @@ import (
 func main() {
     engine := xorm.GetXormEngine()
     userRepo := persistence.UserRepositoryImpl{Engine: engine}
-    smsService := infraSvc.CreateSmsService()
-    userApplicationService := service.NewUserApplicationService(userRepo, smsService)
+    userApplicationService := service.NewUserApplicationService(userRepo)
     userController := controller.NewUserController(userApplicationService)
 
     r := gin.New()
