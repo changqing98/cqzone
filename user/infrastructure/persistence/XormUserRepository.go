@@ -3,10 +3,9 @@ package persistence
 import (
     "github.com/changqing98/cqzone/user/domain/user/model"
     "github.com/changqing98/cqzone/user/infrastructure/data"
+    "github.com/changqing98/cqzone/user/infrastructure/utils/snowflake"
     _ "github.com/changqing98/cqzone/user/infrastructure/utils/snowflake"
     "github.com/go-xorm/xorm"
-    "math/rand"
-    "time"
 )
 
 type UserRepositoryImpl struct {
@@ -14,10 +13,9 @@ type UserRepositoryImpl struct {
 }
 
 func (userRepoImpl UserRepositoryImpl) NextUserId() *model.UserId {
-    rand.Seed(time.Now().UnixNano())
-    randNum := rand.Intn(111111)
-    userIdVal := 10000000 + randNum
-    return model.NewUserId(userIdVal)
+    return &model.UserId{
+        Id: snowflake.Generate(),
+    }
 }
 
 func (userRepoImpl UserRepositoryImpl) Save(user *model.User) {

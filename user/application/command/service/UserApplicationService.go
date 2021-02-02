@@ -2,7 +2,7 @@ package service
 
 import (
     "github.com/changqing98/cqzone/user/application/command"
-    "github.com/changqing98/cqzone/user/application/dto"
+    "github.com/changqing98/cqzone/user/application/command/dto"
     "github.com/changqing98/cqzone/user/domain/user/model"
     "github.com/changqing98/cqzone/user/domain/user/repository"
     "github.com/changqing98/cqzone/user/infrastructure/utils/sha"

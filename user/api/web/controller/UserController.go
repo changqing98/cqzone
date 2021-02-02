@@ -2,17 +2,13 @@ package controller
 
 import (
     "github.com/changqing98/cqzone/user/application/command"
-    appSvc "github.com/changqing98/cqzone/user/application/command/service"
+    "github.com/changqing98/cqzone/user/application/command/service"
     "github.com/gin-gonic/gin"
 )
 
-// UserController 用户接扣
+// UserController 用户接口
 type UserController struct {
-    userApplicationService appSvc.UserApplicationService
-}
-
-func NewUserController(userApplicationService appSvc.UserApplicationService) UserController {
-    return UserController{userApplicationService}
+    userApplicationService *service.UserApplicationService
 }
 
 // Register 用户注册
@@ -40,5 +36,9 @@ func (userController UserController) Register(c *gin.Context) {
 // @Failure 401 {object} web.Error "密码输入错误"
 // @Router /users:passwordLogin [post]
 func (userController UserController) PasswordLogin(c *gin.Context) {
-
+    userApplicationService := userController.userApplicationService
+    var passwordLoginCommand *command.PasswordLoginCommand
+    _ = c.ShouldBind(passwordLoginCommand)
+    result := userApplicationService.PasswordLogin(passwordLoginCommand)
+    c.JSON(200, result)
 }
