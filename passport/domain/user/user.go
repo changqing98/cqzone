@@ -1,7 +1,7 @@
 package user
 
 type User struct {
-	UserId   UserId
+	UserId   *UserId
 	Username string
 	Nickname string
 	Password string

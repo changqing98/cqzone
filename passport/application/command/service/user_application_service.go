@@ -11,13 +11,13 @@ type UserApplicationService struct {
 }
 
 // Register 用户注册
-func (userApplicationService UserApplicationService) Register(createUserCommand *protocol.CreateUserCommand) *protocol.AuthenticationDTO {
-    return &protocol.AuthenticationDTO{
+func (userApplicationService UserApplicationService) Register(createUserCommand *protocol.CreateUserCommand) *protocol.AccessTokenResponse {
+    return &protocol.AccessTokenResponse{
     }
 }
 
 // PasswordLogin 账号密码登录
-func (userApplicationService UserApplicationService) PasswordLogin(command *protocol.PasswordLoginCommand) *protocol.AuthenticationDTO {
-    return &protocol.AuthenticationDTO{
+func (userApplicationService UserApplicationService) PasswordLogin(command *protocol.PasswordLoginCommand) *protocol.AccessTokenResponse {
+    return &protocol.AccessTokenResponse{
     }
 }

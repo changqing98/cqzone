@@ -14,7 +14,7 @@ type UserController struct {
 // @Summary 用户注册
 // @Accept json
 // @Produce  json
-// @Param createUserCommand body protocol.CreateUserCommand true "用户注册请求"
+// @Param CreateUserCommand body protocol.CreateUserCommand true "用户注册请求"
 // @Success 200 {object} protocol.AuthenticationDTO "注册成功"
 // @Failure 409 {object} web.Error "Can not find ID"
 // @Router /users [post]
@@ -24,7 +24,7 @@ func (userController UserController) Register(c *gin.Context) {}
 // @Summary 账号密码登录
 // @Accept json
 // @Produce  json
-// @Param passwordLoginCommand body protocol.PasswordLoginCommand true "用户注册请求"
+// @Param PasswordLoginCommand body protocol.PasswordLoginCommand true "用户注册请求"
 // @Success 200 {object} protocol.AuthenticationDTO	"登录成功返回认证token"
 // @Failure 401 {object} web.Error "密码输入错误"
 // @Router /users:passwordLogin [post]

@@ -70,10 +70,9 @@ func ConvertUserToDo(user *user.User) *data.UserDO {
 
 func ConvertDOToUser(userDO *data.UserDO) *user.User {
     userId := userDO.UserId
-    var user = user.User{
+    return &user.User{
         UserId:   &user.UserId{Id: userId},
         Nickname: userDO.Nickname,
         Password: userDO.Password,
     }
-    return &user
 }
