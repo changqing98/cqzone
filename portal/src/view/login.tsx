@@ -36,6 +36,14 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item
+        label="verification code"
+        name="vcode"
+        rules={[{required: true, message: 'Please input verification code!'}]}
+      >
+        <Input/>
+      </Form.Item>
+
+      <Form.Item
         label="Password"
         name="password"
         rules={[{required: true, message: 'Please input your password!'}]}
