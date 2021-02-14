@@ -33,6 +33,59 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/oauth2.0/authorize": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "description": "授权请求",
+                        "name": "AuthorizeRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protocol.AuthorizeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "302": {}
+                }
+            }
+        },
+        "/oauth2.0/token": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "description": "获取access token",
+                        "name": "AccessTokenRequest",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/protocol.AccessTokenRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "获取token成功",
+                        "schema": {
+                            "$ref": "#/definitions/protocol.AccessTokenResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "post": {
                 "consumes": [
@@ -45,7 +98,7 @@ var doc = `{
                 "parameters": [
                     {
                         "description": "用户注册请求",
-                        "name": "command",
+                        "name": "CreateUserCommand",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -57,13 +110,13 @@ var doc = `{
                     "200": {
                         "description": "注册成功",
                         "schema": {
-                            "$ref": "#/definitions/protocol.AuthenticationDTO"
+                            "$ref": "#/definitions/protocol.AccessTokenResponse"
                         }
                     },
                     "409": {
                         "description": "Can not find ID",
                         "schema": {
-                            "$ref": "#/definitions/web.Error"
+                            "$ref": "#/definitions/gin.Error"
                         }
                     }
                 }
@@ -81,7 +134,7 @@ var doc = `{
                 "parameters": [
                     {
                         "description": "用户注册请求",
-                        "name": "command",
+                        "name": "PasswordLoginCommand",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -93,13 +146,13 @@ var doc = `{
                     "200": {
                         "description": "登录成功返回认证token",
                         "schema": {
-                            "$ref": "#/definitions/protocol.AuthenticationDTO"
+                            "$ref": "#/definitions/protocol.AccessTokenResponse"
                         }
                     },
                     "401": {
                         "description": "密码输入错误",
                         "schema": {
-                            "$ref": "#/definitions/web.Error"
+                            "$ref": "#/definitions/gin.Error"
                         }
                     }
                 }
@@ -107,13 +160,73 @@ var doc = `{
         }
     },
     "definitions": {
-        "protocol.AuthenticationDTO": {
+        "gin.Error": {
             "type": "object",
             "properties": {
-                "access_token": {
+                "err": {
+                    "type": "error"
+                },
+                "meta": {
+                    "type": "object"
+                },
+                "type": {
+                    "type": "ErrorType"
+                }
+            }
+        },
+        "protocol.AccessTokenRequest": {
+            "type": "object",
+            "properties": {
+                "clientId": {
                     "type": "string"
                 },
-                "refresh_token": {
+                "code": {
+                    "type": "string"
+                },
+                "grantType": {
+                    "type": "string"
+                },
+                "redirectURI": {
+                    "type": "string"
+                }
+            }
+        },
+        "protocol.AccessTokenResponse": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "expiresIn": {
+                    "type": "integer"
+                },
+                "idToken": {
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "type": "string"
+                },
+                "tokenType": {
+                    "type": "string"
+                }
+            }
+        },
+        "protocol.AuthorizeRequest": {
+            "type": "object",
+            "properties": {
+                "clientId": {
+                    "type": "string"
+                },
+                "redirectURI": {
+                    "type": "string"
+                },
+                "responseType": {
+                    "type": "string"
+                },
+                "scope": {
+                    "type": "string"
+                },
+                "state": {
                     "type": "string"
                 }
             }
@@ -128,6 +241,10 @@ var doc = `{
                 "email": {
                     "description": "邮箱",
                     "type": "string"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
                 }
             }
         },
@@ -140,17 +257,6 @@ var doc = `{
                 },
                 "password": {
                     "description": "密码",
-                    "type": "string"
-                }
-            }
-        },
-        "web.Error": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer"
-                },
-                "message": {
                     "type": "string"
                 }
             }

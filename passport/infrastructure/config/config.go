@@ -11,7 +11,7 @@ var configInst = &config{
     Db: struct {
         Driver     string
         DataSource string
-    }{Driver: "mysql", DataSource: "changqing:123456@tcp(mysql:3306)/cquser"},
+    }{Driver: "mysql", DataSource: "changqing:123456@tcp(mysql:3306)/passport"},
 }
 
 func GetConfig() *config {

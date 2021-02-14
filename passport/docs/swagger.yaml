@@ -1,10 +1,49 @@
 basePath: /v1
 definitions:
-  protocol.AuthenticationDTO:
+  gin.Error:
     properties:
-      access_token:
+      err:
+        type: error
+      meta:
+        type: object
+      type:
+        type: ErrorType
+    type: object
+  protocol.AccessTokenRequest:
+    properties:
+      clientId:
         type: string
-      refresh_token:
+      code:
+        type: string
+      grantType:
+        type: string
+      redirectURI:
+        type: string
+    type: object
+  protocol.AccessTokenResponse:
+    properties:
+      accessToken:
+        type: string
+      expiresIn:
+        type: integer
+      idToken:
+        type: string
+      refreshToken:
+        type: string
+      tokenType:
+        type: string
+    type: object
+  protocol.AuthorizeRequest:
+    properties:
+      clientId:
+        type: string
+      redirectURI:
+        type: string
+      responseType:
+        type: string
+      scope:
+        type: string
+      state:
         type: string
     type: object
   protocol.CreateUserCommand:
@@ -15,6 +54,9 @@ definitions:
       email:
         description: 邮箱
         type: string
+      password:
+        description: 密码
+        type: string
     type: object
   protocol.PasswordLoginCommand:
     properties:
@@ -23,13 +65,6 @@ definitions:
         type: string
       password:
         description: 密码
-        type: string
-    type: object
-  web.Error:
-    properties:
-      code:
-        type: integer
-      message:
         type: string
     type: object
 host: localhost:8080
@@ -46,6 +81,39 @@ info:
   title: Swagger Example API
   version: "1.0"
 paths:
+  /oauth2.0/authorize:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 授权请求
+        in: body
+        name: AuthorizeRequest
+        required: true
+        schema:
+          $ref: '#/definitions/protocol.AuthorizeRequest'
+      produces:
+      - application/json
+      responses:
+        "302": {}
+  /oauth2.0/token:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 获取access token
+        in: body
+        name: AccessTokenRequest
+        required: true
+        schema:
+          $ref: '#/definitions/protocol.AccessTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取token成功
+          schema:
+            $ref: '#/definitions/protocol.AccessTokenResponse'
   /users:
     post:
       consumes:
@@ -53,7 +121,7 @@ paths:
       parameters:
       - description: 用户注册请求
         in: body
-        name: command
+        name: CreateUserCommand
         required: true
         schema:
           $ref: '#/definitions/protocol.CreateUserCommand'
@@ -63,11 +131,11 @@ paths:
         "200":
           description: 注册成功
           schema:
-            $ref: '#/definitions/protocol.AuthenticationDTO'
+            $ref: '#/definitions/protocol.AccessTokenResponse'
         "409":
           description: Can not find ID
           schema:
-            $ref: '#/definitions/web.Error'
+            $ref: '#/definitions/gin.Error'
       summary: 用户注册
   /users:passwordLogin:
     post:
@@ -76,7 +144,7 @@ paths:
       parameters:
       - description: 用户注册请求
         in: body
-        name: command
+        name: PasswordLoginCommand
         required: true
         schema:
           $ref: '#/definitions/protocol.PasswordLoginCommand'
@@ -86,10 +154,10 @@ paths:
         "200":
           description: 登录成功返回认证token
           schema:
-            $ref: '#/definitions/protocol.AuthenticationDTO'
+            $ref: '#/definitions/protocol.AccessTokenResponse'
         "401":
           description: 密码输入错误
           schema:
-            $ref: '#/definitions/web.Error'
+            $ref: '#/definitions/gin.Error'
       summary: 账号密码登录
 swagger: "2.0"

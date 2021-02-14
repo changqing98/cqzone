@@ -9,7 +9,9 @@ import "github.com/gin-gonic/gin"
 // @Param AuthorizeRequest body protocol.AuthorizeRequest true "授权请求"
 // @Success 302
 // @Router /oauth2.0/authorize [get]
-func (userController UserController) Authorize(c *gin.Context) {}
+func (userController UserController) Authorize(c *gin.Context) {
+
+}
 
 // FetchToken 获取access token
 // @Summary

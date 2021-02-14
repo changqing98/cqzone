@@ -2,6 +2,7 @@ package persistence
 
 import (
     "github.com/changqing98/cqzone/user/domain/user"
+    "github.com/changqing98/cqzone/user/infrastructure/constant"
     "github.com/changqing98/cqzone/user/infrastructure/data"
     "github.com/changqing98/cqzone/user/infrastructure/utils/snowflake"
     _ "github.com/changqing98/cqzone/user/infrastructure/utils/snowflake"
@@ -47,11 +48,11 @@ func (userRepoImpl UserRepositoryImpl) FindByUserId(userId *user.UserId) *user.U
     return ConvertDOToUser(&userDo)
 }
 
-func (userRepoImpl UserRepositoryImpl) FindByUsername(username string) *user.User {
+func (userRepoImpl UserRepositoryImpl) FindByEmail(email string) *user.User {
     var userDo data.UserDO
-    success, err := userRepoImpl.Engine.Where("username = ?", username).Get(&userDo)
+    success, err := userRepoImpl.Engine.Where("email = ?", email).Get(&userDo)
     if !success {
-        panic("User not found")
+        panic(constant.UserNotFound)
     }
     if err != nil {
         panic(err)
@@ -63,6 +64,7 @@ func ConvertUserToDo(user *user.User) *data.UserDO {
     var userDo = data.UserDO{
         UserId:   user.UserId.Id,
         Nickname: user.Nickname,
+        Email: user.Email,
         Password: user.Password,
     }
     return &userDo
